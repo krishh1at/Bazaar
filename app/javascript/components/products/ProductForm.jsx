@@ -1,11 +1,10 @@
 import React from "react"
 import Axios from "axios"
-import FormModal from "./Modal"
+import FormModal from "./FormModal"
 
 class ProductForm extends React.Component {
   constructor(props) {
     super(props)
-    console.log(this.props)
   }
 
   render() {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Modal, Button } from "react-bootstrap"
+import { Modal, Button, InputGroup, FormControl } from "react-bootstrap"
 
 const FormModal = (props) => {
   const [show, setShow] = useState(false)
@@ -20,7 +20,7 @@ const FormModal = (props) => {
           <Modal.Body>
               <div className="form-group">
                 <label htmlFor="product_name">Name</label>
-                <input
+                <FormControl
                   name="name"
                   id="product_name"
                   type="text"
@@ -33,16 +33,21 @@ const FormModal = (props) => {
               <div className="row">
                 <div className="form-group col-sm-6">
                   <label htmlFor="product_price">Price</label>
-                  <input
-                    name="price"
-                    id="product_price"
-                    type="number"
-                    min={ 0 }
-                    onChange={ props.onChangeHandler }
-                    value={ price }
-                    className="form-control"
-                    placeholder="Enter Price"
-                  />
+                  <InputGroup>
+                    <InputGroup.Prepend>
+                      <InputGroup.Text>$</InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl
+                      name="price"
+                      id="product_price"
+                      type="number"
+                      min={ 0 }
+                      onChange={ props.onChangeHandler }
+                      value={ price }
+                      placeholder="Enter Price"
+                      aria-label="Amount (to the nearest dollar)"
+                    />
+                  </InputGroup>
                 </div>
                 <div className="form-group col-sm-6">
                   <label htmlFor="product_description">Description</label>

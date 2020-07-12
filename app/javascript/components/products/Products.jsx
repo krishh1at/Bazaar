@@ -1,6 +1,6 @@
 import React from "react"
 import Axios from "axios"
-import ProductForm from "./Form"
+import ProductForm from "./ProductForm"
 import Product from "./Product"
 
 class Products extends React.Component {
@@ -26,6 +26,7 @@ class Products extends React.Component {
 
     Axios.post(`/api/v1/products`, { product: this.state.product })
     .then(resp => {
+      console.log(resp)
       const products = this.state.products
       const updatedProductsCount = products.unshift(resp.data.data)
       this.setState({ products: products, product: { name: '', price: '', description: '' } })
@@ -54,9 +55,9 @@ class Products extends React.Component {
     })
 
     return(
-      <div className="p-3 bg-dark">
+      <div className="container my-4">
         <div className="clearfix">
-          <h1 className="text-light float-left">{ this.state.products.length }: Products available...</h1>
+          <h1 className="float-left">{ this.state.products.length }: Products available...</h1>
           <ProductForm
             onFormSubmitHandler={ this.onFormSubmitHandler }
             onChangeHandler={ this.onChangeHandler }
@@ -64,13 +65,13 @@ class Products extends React.Component {
           />
         </div>
 
-        <div className="p-3 bg-light row mx-auto">
+        <div className="mx-auto">
           <table className="table table-striped">
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Price</th>
                 <th>Description</th>
+                <th>Price</th>
                 <th>Action</th>
               </tr>
             </thead>

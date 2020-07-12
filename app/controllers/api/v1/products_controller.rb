@@ -13,7 +13,7 @@ class Api::V1::ProductsController < ApplicationController
     if product.save
       render json: ProductSerializer.new(product).serialized_json
     else
-      render json: product.errors.full_messages
+      render status: 400, error: "error", json: product.errors.full_messages
     end
   end
 

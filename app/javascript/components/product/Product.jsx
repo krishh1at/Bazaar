@@ -21,7 +21,7 @@ class Product extends React.Component {
     const { name, price, description } = this.state.product.data.attributes
 
     return(
-      <div className="bg-light">
+      <div className="container bg-light">
         {
           this.state.loaded &&
           <div className="p-3">
