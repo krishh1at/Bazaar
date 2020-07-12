@@ -1,16 +1,19 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 const Product = (props) => {
   const { name, price, description } = props.attributes
+  console.log(props)
 
   return(
-    <div className="p-3 bg-light col-sm-6 col-md-4 col-lg-3">
-      <div className="p-3 bg-dark text-center">
-        <div className="text-light font-weight-bold">{ name }</div>
-        <div className="text-light">{ description }</div>
-        <div className="text-light">Price: ${ price }</div>
-      </div>
-    </div>
+    <tr>
+      <td>{ name }</td>
+      <td>{ description }</td>
+      <td>${ price }</td>
+      <td>
+        <Link to={`/products/${props.id}`} className="btn btn-primary">View</Link>
+      </td>
+    </tr>
   )
 }
 

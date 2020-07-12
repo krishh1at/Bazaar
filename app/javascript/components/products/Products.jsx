@@ -49,29 +49,43 @@ class Products extends React.Component {
   render() {
     const products = this.state.products.map(product => {
       return(
-        <Product attributes={ product.attributes } key={ product.id } />
+        <Product attributes={ product.attributes } id={ product.id } key={ product.id } />
       )
     })
 
     return(
       <div className="p-3 bg-dark">
-        <div className="bg-secondary mb-5">
+        <div className="clearfix">
+          <h1 className="text-light float-left">{ this.state.products.length }: Products available...</h1>
           <ProductForm
-            product={ this.state.product }
-            onChangeHandler={ this.onChangeHandler }
             onFormSubmitHandler={ this.onFormSubmitHandler }
+            onChangeHandler={ this.onChangeHandler }
+            product={ this.state.product }
           />
         </div>
-        <p className="text-center text-light font-weight-bold">{ this.state.products.length }: Products available...</p>
+
         <div className="p-3 bg-light row mx-auto">
-          {
-            this.state.loaded &&
-            products
-          }
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {
+                this.state.loaded &&
+                products
+              }
+            </tbody>
+          </table>
         </div>
       </div>
     );
   }
 }
 
-export default Products;
+export default Products
